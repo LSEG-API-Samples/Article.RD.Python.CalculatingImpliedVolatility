@@ -1,0 +1,26 @@
+while True:
+    # Code executed here
+    clear_output(wait=True)
+    print(datetime.now())
+    try:
+        ImpVolatilityCalcIPA(
+            x=15,  # Number of days after which we start searching for Options' Expiries
+            dateBack=3,  # Number of business days for which the chart will show data
+            indexUnderlying=".STOXX50E",  # ".SPX" or ".STOXX50E"
+            callOrPut='Call',  # 'Call' or 'Put'
+            simpleGraph=True,
+            AtOptionTradeOnly=True)
+        time.sleep(60*10)
+    except:
+        try:
+            ImpVolatilityCalcIPA(
+                x=15,  # Number of days after which we start searching for Options' Expiries
+                dateBack=3,  # Number of business days for which the chart will show data
+                indexUnderlying=".STOXX50E",  # ".SPX" or ".STOXX50E"
+                callOrPut='Call',  # 'Call' or 'Put'
+                simpleGraph=True,
+                AtOptionTradeOnly=False)
+            print("NOTE THAT 'AtOptionTradeOnly' WAS SET TO 'False'")
+            time.sleep(60*10)
+        except:
+            print("Please wait for next roll")
